@@ -24,3 +24,14 @@
     // alert(this.time_format);
     return this.time_format;
   }
+
+// 24 to 12 hours conversion
+  tConv24(time24) {
+    this.ts = time24;
+    this.H = +this.ts.substr(0, 2);
+    this.h = (this.H % 12) || 12;
+    this.h = (this.h < 10)?("0"+this.h):this.h;  // leading 0 at the left for 1 digit hours
+    this.ampm = this.H < 12 ? " AM" : " PM";
+    this.ts = this.h + this.ts.substr(2, 3) + this.ampm;
+    return this.ts;
+  };
